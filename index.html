@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grok 4.5 API 中转站 2026：价格、分组倍率与接入参考</title>
+<meta name="description" content="Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。">
+<meta name="keywords" content="Grok 4.5 API 中转站,Grok 4.5 API,grok-4.5,xAI API 中转,Grok API 价格,Grok 4.5 价格,大模型 API 中转,API 分组倍率">
+<link rel="canonical" href="https://a37836323.github.io/grok-4-5-api/">
+<link rel="alternate" hreflang="zh-CN" href="https://a37836323.github.io/grok-4-5-api/">
+<link rel="alternate" hreflang="en-US" href="https://grok-4-5-api-en.pages.dev/">
+<link rel="alternate" hreflang="x-default" href="https://a37836323.github.io/grok-4-5-api/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="Grok 4.5 API 中转站 2026：价格、分组倍率与接入参考">
+<meta property="og:description" content="Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。">
+<meta property="og:url" content="https://api.openlux.ai/">
+<meta property="og:site_name" content="OpenLux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grok 4.5 API 中转站 2026：价格、分组倍率与接入参考">
+<meta name="twitter:description" content="Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://api.openlux.ai/#organization",
+      "name": "OpenLux",
+      "url": "https://api.openlux.ai",
+      "description": "Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。",
+      "sameAs": [
+        "https://openlux.ai",
+        "https://doc.openlux.ai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#website",
+      "url": "https://a37836323.github.io/grok-4-5-api",
+      "name": "Grok 4.5 API 中转站 2026：价格、分组倍率与接入参考",
+      "inLanguage": "zh-CN",
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OpenLux",
+          "item": "https://api.openlux.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Grok 4.5 API 中转站",
+          "item": "https://a37836323.github.io/grok-4-5-api/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#application",
+      "name": "OpenLux API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://api.openlux.ai",
+      "description": "Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。",
+      "offers": {
+        "@type": "Offer",
+        "price": "待实测",
+        "priceCurrency": "CNY",
+        "url": "https://api.openlux.ai",
+        "description": "grok-4.5 的面板基准价以美元计：输入 $2、输出 $6、缓存命中 $0.5 / 100 万 token；实际结算按账号分组倍率计算，人民币价格待实测。"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#article",
+      "headline": "Grok 4.5 API 中转站 2026 接入参考",
+      "datePublished": "2026-08-04",
+      "dateModified": "2026-08-05",
+      "inLanguage": "zh-CN",
+      "author": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "mainEntityOfPage": "https://a37836323.github.io/grok-4-5-api/"
+    }
+  ]
+}
+</script>
+<style>*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#fdfdfc;color:#18181b;font-family:"Helvetica Neue",Helvetica,"PingFang SC","Source Han Sans SC","Microsoft YaHei",sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
+.note-box85{max-width:860px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.85rem;line-height:1.4;margin:.2em 0 .6em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:2.2em 0 .7em;padding-bottom:.35em;
+border-bottom:2px solid #dcfce7}
+h3{font-size:1.08rem;margin:1.6em 0 .5em}
+a{color:#059669;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+code{background:#f0fdf4;padding:.15em .4em;border-radius:2px;
+font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#f0fdf4;border:1px solid #dcfce7;border-radius:4px;
+padding:16px;overflow-x:auto;font-size:.86rem;line-height:1.6}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.94rem}
+th,td{border:1px solid #dcfce7;padding:10px 12px;text-align:left}
+th{background:#f0fdf4;font-weight:600}
+ul,ol{padding-left:1.5em}
+ul{list-style-type:disc}
+li{margin:.4em 0}
+.head-stack13{background:#f0fdf4;border-left:3px solid #059669;
+border-radius:0 4px 4px 0;padding:14px 18px;margin:1.4em 0}
+.head-box30{display:inline-block;background:#059669;color:#fff;
+padding:12px 26px;border-radius:4px;font-weight:600;margin:.6em 0}
+.head-box30:hover{opacity:.88;text-decoration:none}
+.list-list28{color:#71717a;font-size:.86rem;margin-top:3em;
+padding-top:1.2em;border-top:1px solid #dcfce7}
+.unit-slot99{border:1px solid #dcfce7;border-radius:4px;
+padding:2px 18px;margin:.8em 0}
+.card-shell63{overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15px}
+  h1{font-size:1.5rem}
+  h2{font-size:1.18rem}
+  .note-box85{padding:20px 16px 48px}
+  table{font-size:.85rem}
+  th,td{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}</style>
+</head>
+<body>
+<main class="note-box85">
+<h1>Grok 4.5 API 中转站 2026 接入参考</h1>
+<p>Grok 4.5 的发布时间待实测。本文整理 2026-08-04 从平台定价接口拉取的 grok-4.5 基准价格、分组倍率与接入核对项，帮助开发者在调用前确认实际结算方式。</p>
+<div>
+<h2>最新动态：2026-08-04 面板数据更新</h2>
+<ul>
+<li>定价数据来自 <strong>https://api.openlux.ai/api/pricing</strong>，拉取时间为 2026-08-04T16:16:08Z。</li>
+<li>当前面板在售模型总数为 <strong>452 个</strong>。</li>
+<li>grok-4.5 的基准价为输入 <strong>$2 / 100 万 token</strong>、输出 <strong>$6 / 100 万 token</strong>。</li>
+<li>grok-4.5 缓存命中基准价为 <strong>$0.5 / 100 万 token</strong>。</li>
+<li>最终结算价格按基准价乘以用户所在分组倍率计算。</li>
+</ul>
+<p><a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">OpenLux</a></p>
+</div>
+<div>
+<h2>什么是 Grok 4.5 API 中转站？</h2>
+<p><strong>所谓 API 中转，就是把多家厂商的接口收敛成一套统一标准，你只对接一次，后面换模型只改一个参数。</strong></p>
+<p>grok-4.5 官方接口在国内落地，卡点集中在网络可达性、支付方式和账号稳定性这三件事上。</p>
+<p>OpenLux 把这一层做成了公共服务：<a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">OpenLux Grok 4.5 API 中转站</a> 聚合了 452 个在售模型 主流模型，统一走 OpenAI 兼容格式，国内网络可直接访问，支持人民币结算。</p>
+</div>
+<div>
+<h2>支持的模型与价格</h2>
+<div class="card-shell63">
+<table>
+<thead><tr><th>模型</th><th>适用场景</th><th>上下文</th><th>输入价格</th><th>输出价格</th><th>实测首字延迟</th></tr></thead>
+<tbody>
+<tr><td>grok-4.5</td><td>文本任务</td><td>待实测</td><td>$2 / 100 万 token（基准价，实际按分组倍率结算）</td><td>$6 / 100 万 token（基准价，实际按分组倍率结算）</td><td>待实测</td></tr>
+</tbody>
+</table>
+</div>
+<p><small>价格以 <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">Grok 4.5 API 中转站</a> 实时页面为准，本页更新于 2026年08月05日。</small></p>
+</div>
+<div>
+<h2>为什么需要 API 中转？</h2>
+<ul>
+<li><strong>Grok 4.5 已在售</strong>：定价接口的在售清单包含 grok-4.5，模型类型标记为文本。</li>
+<li><strong>基准价格可核对</strong>：grok-4.5 的输入、输出和缓存命中基准价均可从面板定价接口中核对，单位为美元 / 100 万 token。</li>
+<li><strong>分组倍率参与结算</strong>：实际价格不是固定基准价，而是基准价乘以用户所在分组的倍率；调用前应确认当前账号所属分组。</li>
+<li><strong>同一面板含多模型</strong>：平台在售模型总数为 452 个。已提供的列表仅列调用量最高的 150 个，未列出的 302 个模型不应视为不支持。</li>
+</ul>
+<p>以上能力在 <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">https://api.openlux.ai</a> 均已上线，可注册后自行验证。</p>
+</div>
+<div>
+<h2>这个站还有这些内容</h2>
+<ul class="slot-pane22">
+<li><a href="https://a37836323.github.io/grok-4-5-api/quickstart/">grok-4.5 API 在国内怎么接入？</a><span>接入步骤与可直接复制的代码</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/compare/">grok-4.5 用官方直连还是中转？逐项对比</a><span>逐项对比，含中转方案的局限</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/faq/">grok-4.5 API 常见问题</a><span>接入时最常遇到的问题</span></li>
+</ul>
+</div>
+<div>
+<h2>开始使用</h2>
+<p>先在面板确认分组倍率、接入地址和 grok-4.5 可用性，再进行最小请求测试</p>
+<p><a class="head-box30" href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="button">注册账号，领取测试额度</a></p>
+<p>官方地址：<a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">OpenLux官网</a></p>
+</div>
+<p class="list-list28">最后更新：2026年08月05日　|　本页由 OpenLux 编写并维护。<br>所有性能与价格数据来自实测，如与官网不一致，以官网实时页面为准。</p>
+</main>
+<script>
+(function(){
+  try{
+    var EP='https://tk.openlux.ai/collect',S='grok-4-5-api',L='zh-CN',V=1;
+    // 会话内唯一，仅存在于内存：刷新即变，不落 cookie 也不落 storage
+    var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    function send(type,extra){
+      try{
+        var p={v:V,t:type,s:S,l:L,sid:sid,
+               r:document.referrer||'',
+               p:location.pathname||'/',
+               q:location.search||'',
+               sw:screen.width||0,
+               tz:(Intl.DateTimeFormat().resolvedOptions()||{}).timeZone||''};
+        for(var k in extra){p[k]=extra[k];}
+        var body=JSON.stringify(p);
+        if(navigator.sendBeacon){
+          navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
+        }else{
+          // 老浏览器兜底。keepalive 让请求在页面卸载后仍能发完
+          fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+        }
+      }catch(e){}
+    }
+    // 预渲染的页面不算一次真实访问，等真正可见了再报
+    if(document.visibilityState==='prerender'){
+      document.addEventListener('visibilitychange',function h(){
+        if(document.visibilityState!=='prerender'){
+          document.removeEventListener('visibilitychange',h);send('view');
+        }
+      });
+    }else{
+      send('view');
+    }
+    // 出站点击：只记去向和位置，不记任何个人信息
+    document.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
+      if(!a)return;
+      send('click',{c:a.getAttribute('data-cta')||'',h:a.href||''});
+    },{capture:true,passive:true});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
