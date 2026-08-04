@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>grok-4.5 API 怎么调用：接入步骤与代码示例（2026）</title>
+<meta name="description" content="grok-4.5 的接入步骤与可直接复制的代码示例。">
+<meta name="keywords" content="Grok 4.5 API 中转站,Grok 4.5 API,grok-4.5,xAI API 中转,Grok API 价格,Grok 4.5 价格,大模型 API 中转,API 分组倍率">
+<link rel="canonical" href="https://a37836323.github.io/grok-4-5-api/quickstart/">
+<link rel="alternate" hreflang="zh-CN" href="https://a37836323.github.io/grok-4-5-api/">
+<link rel="alternate" hreflang="en-US" href="https://grok-4-5-api-en.pages.dev/">
+<link rel="alternate" hreflang="x-default" href="https://a37836323.github.io/grok-4-5-api/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="grok-4.5 API 怎么调用：接入步骤与代码示例（2026）">
+<meta property="og:description" content="grok-4.5 的接入步骤与可直接复制的代码示例。">
+<meta property="og:url" content="https://api.openlux.ai/">
+<meta property="og:site_name" content="OpenLux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="grok-4.5 API 怎么调用：接入步骤与代码示例（2026）">
+<meta name="twitter:description" content="grok-4.5 的接入步骤与可直接复制的代码示例。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://api.openlux.ai/#organization",
+      "name": "OpenLux",
+      "url": "https://api.openlux.ai",
+      "description": "Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。",
+      "sameAs": [
+        "https://openlux.ai",
+        "https://doc.openlux.ai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#website",
+      "url": "https://a37836323.github.io/grok-4-5-api",
+      "name": "Grok 4.5 API 中转站 2026：价格、分组倍率与接入参考",
+      "inLanguage": "zh-CN",
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://a37836323.github.io/grok-4-5-api/quickstart/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OpenLux",
+          "item": "https://api.openlux.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Grok 4.5 API 中转站",
+          "item": "https://a37836323.github.io/grok-4-5-api/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "grok-4.5 API 在国内怎么接入？",
+          "item": "https://a37836323.github.io/grok-4-5-api/quickstart/"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#howto",
+      "name": "如何接入 grok-4.5 API",
+      "totalTime": "PT5M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "确认账号分组",
+          "text": "先在平台面板确认当前账号所属分组及对应倍率，实际结算价格由基准价乘以该倍率得到。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "核对模型名称",
+          "text": "在可用模型列表中确认请求使用的模型名为 grok-4.5。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "获取接入信息",
+          "text": "从平台面板获取当前账号对应的请求地址、鉴权凭证和请求格式，不要将示例中的环境变量占位值用于生产环境。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "发起最小请求",
+          "text": "先使用短文本请求验证模型可用性、响应格式和实际计费记录。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "核对账单与延迟",
+          "text": "将请求 token 用量、分组倍率和账单记录交叉核对；首字延迟等性能数据需按自身网络环境实测。"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#application",
+      "name": "OpenLux API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://api.openlux.ai",
+      "description": "Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。",
+      "offers": {
+        "@type": "Offer",
+        "price": "待实测",
+        "priceCurrency": "CNY",
+        "url": "https://api.openlux.ai",
+        "description": "grok-4.5 的面板基准价以美元计：输入 $2、输出 $6、缓存命中 $0.5 / 100 万 token；实际结算按账号分组倍率计算，人民币价格待实测。"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://a37836323.github.io/grok-4-5-api/quickstart/#article",
+      "headline": "grok-4.5 API 在国内怎么接入？",
+      "datePublished": "2026-08-04",
+      "dateModified": "2026-08-05",
+      "inLanguage": "zh-CN",
+      "author": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "mainEntityOfPage": "https://a37836323.github.io/grok-4-5-api/quickstart/"
+    }
+  ]
+}
+</script>
+<style>*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#fdfdfc;color:#18181b;font-family:"Helvetica Neue",Helvetica,"PingFang SC","Source Han Sans SC","Microsoft YaHei",sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
+.row-head17{max-width:860px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.85rem;line-height:1.4;margin:.2em 0 .6em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:2.2em 0 .7em;padding-bottom:.35em;
+border-bottom:2px solid #dcfce7}
+h3{font-size:1.08rem;margin:1.6em 0 .5em}
+a{color:#059669;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+code{background:#f0fdf4;padding:.15em .4em;border-radius:2px;
+font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#f0fdf4;border:1px solid #dcfce7;border-radius:4px;
+padding:16px;overflow-x:auto;font-size:.86rem;line-height:1.6}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.94rem}
+th,td{border:1px solid #dcfce7;padding:10px 12px;text-align:left}
+th{background:#f0fdf4;font-weight:600}
+ul,ol{padding-left:1.5em}
+ul{list-style-type:disc}
+li{margin:.4em 0}
+.area-note16{background:#f0fdf4;border-left:3px solid #059669;
+border-radius:0 4px 4px 0;padding:14px 18px;margin:1.4em 0}
+.col-slot22{display:inline-block;background:#059669;color:#fff;
+padding:12px 26px;border-radius:4px;font-weight:600;margin:.6em 0}
+.col-slot22:hover{opacity:.88;text-decoration:none}
+.list-head91{color:#71717a;font-size:.86rem;margin-top:3em;
+padding-top:1.2em;border-top:1px solid #dcfce7}
+.wrap-list85{border:1px solid #dcfce7;border-radius:4px;
+padding:2px 18px;margin:.8em 0}
+.block-unit46{overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15px}
+  h1{font-size:1.5rem}
+  h2{font-size:1.18rem}
+  .row-head17{padding:20px 16px 48px}
+  table{font-size:.85rem}
+  th,td{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}</style>
+</head>
+<body>
+<main class="row-head17">
+<p class="pane-stack18"><a href="https://a37836323.github.io/grok-4-5-api/">首页</a> ／ grok-4.5</p>
+<h1>grok-4.5 API 在国内怎么接入？</h1>
+<div>
+<h2>grok-4.5 API 在国内怎么调用？</h2>
+<p>迁移成本几乎为零，改 <code>base_url</code> 和 <code>api_key</code> 两个值就行，其余业务代码一行不用动。</p>
+<ol>
+<li><strong>确认账号分组</strong>：先在平台面板确认当前账号所属分组及对应倍率，实际结算价格由基准价乘以该倍率得到。</li>
+<li><strong>核对模型名称</strong>：在可用模型列表中确认请求使用的模型名为 grok-4.5。</li>
+<li><strong>获取接入信息</strong>：从平台面板获取当前账号对应的请求地址、鉴权凭证和请求格式，不要将示例中的环境变量占位值用于生产环境。</li>
+<li><strong>发起最小请求</strong>：先使用短文本请求验证模型可用性、响应格式和实际计费记录。</li>
+<li><strong>核对账单与延迟</strong>：将请求 token 用量、分组倍率和账单记录交叉核对；首字延迟等性能数据需按自身网络环境实测。</li>
+</ol>
+<h3>完整代码示例</h3>
+<pre><code class="language-python">import json
+import os
+from urllib.request import Request, urlopen
+
+api_url = os.environ[&quot;API_URL&quot;]  # 替换为面板提供的实际请求地址
+api_key = os.environ[&quot;API_KEY&quot;]  # 替换为面板提供的实际鉴权凭证
+
+payload = {
+    &quot;model&quot;: &quot;grok-4.5&quot;,
+    &quot;messages&quot;: [
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;请用一句话说明这段请求用于连通性测试。&quot;}
+    ]
+}
+
+request = Request(
+    api_url,
+    data=json.dumps(payload).encode(&quot;utf-8&quot;),
+    headers={
+        &quot;Content-Type&quot;: &quot;application/json&quot;,
+        &quot;Authorization&quot;: f&quot;Bearer {api_key}&quot;
+    },
+    method=&quot;POST&quot;
+)
+
+with urlopen(request, timeout=60) as response:
+    print(response.read().decode(&quot;utf-8&quot;))
+</code></pre>
+<p><a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">OpenLux</a></p>
+</div>
+<div>
+<h2>这个站还有这些内容</h2>
+<ul class="shell-card51">
+<li><a href="https://a37836323.github.io/grok-4-5-api/compare/">grok-4.5 用官方直连还是中转？逐项对比</a><span>逐项对比，含中转方案的局限</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/faq/">grok-4.5 API 常见问题</a><span>接入时最常遇到的问题</span></li>
+</ul>
+</div>
+<div>
+<h2>开始使用</h2>
+<p>先在面板确认分组倍率、接入地址和 grok-4.5 可用性，再进行最小请求测试</p>
+<p><a class="col-slot22" href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="button">免费注册，获取 API Key</a></p>
+<p>官方地址：<a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">OpenLux Grok 4.5 API 中转站</a></p>
+</div>
+<p class="list-head91">最后更新：2026年08月05日　|　本页由 OpenLux 编写并维护。<br>所有性能与价格数据来自实测，如与官网不一致，以官网实时页面为准。</p>
+</main>
+<script>
+(function(){
+  try{
+    var EP='https://tk.openlux.ai/collect',S='grok-4-5-api',L='zh-CN',V=1;
+    // 会话内唯一，仅存在于内存：刷新即变，不落 cookie 也不落 storage
+    var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    function send(type,extra){
+      try{
+        var p={v:V,t:type,s:S,l:L,sid:sid,
+               r:document.referrer||'',
+               p:location.pathname||'/',
+               q:location.search||'',
+               sw:screen.width||0,
+               tz:(Intl.DateTimeFormat().resolvedOptions()||{}).timeZone||''};
+        for(var k in extra){p[k]=extra[k];}
+        var body=JSON.stringify(p);
+        if(navigator.sendBeacon){
+          navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
+        }else{
+          // 老浏览器兜底。keepalive 让请求在页面卸载后仍能发完
+          fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+        }
+      }catch(e){}
+    }
+    // 预渲染的页面不算一次真实访问，等真正可见了再报
+    if(document.visibilityState==='prerender'){
+      document.addEventListener('visibilitychange',function h(){
+        if(document.visibilityState!=='prerender'){
+          document.removeEventListener('visibilitychange',h);send('view');
+        }
+      });
+    }else{
+      send('view');
+    }
+    // 出站点击：只记去向和位置，不记任何个人信息
+    document.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
+      if(!a)return;
+      send('click',{c:a.getAttribute('data-cta')||'',h:a.href||''});
+    },{capture:true,passive:true});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
