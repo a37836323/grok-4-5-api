@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>grok-4.5 API 怎么买最便宜？2026 价格与性价比</title>
+<meta name="description" content="grok-4.5 API 基准价为输入 $2、输出 $6、缓存命中 $0.5/百万 token，实际费用还要乘用户分组倍率。本文用同档位价格表和成本公式，说明如何核对分组、评估取舍并控制月度开支。">
+<meta name="keywords" content="Grok 4.5 API 中转站,Grok 4.5 API,grok-4.5,xAI API 中转,Grok API 价格,Grok 4.5 价格,大模型 API 中转,API 分组倍率">
+<link rel="canonical" href="https://a37836323.github.io/grok-4-5-api/grok-45-api-cost/">
+<link rel="alternate" hreflang="zh-CN" href="https://a37836323.github.io/grok-4-5-api/">
+<link rel="alternate" hreflang="en-US" href="https://grok-4-5-api-en.pages.dev/">
+<link rel="alternate" hreflang="x-default" href="https://a37836323.github.io/grok-4-5-api/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="grok-4.5 API 怎么买最便宜？2026 价格与性价比">
+<meta property="og:description" content="grok-4.5 API 基准价为输入 $2、输出 $6、缓存命中 $0.5/百万 token，实际费用还要乘用户分组倍率。本文用同档位价格表和成本公式，说明如何核对分组、评估取舍并控制月度开支。">
+<meta property="og:url" content="https://api.openlux.ai/">
+<meta property="og:site_name" content="OpenLux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="grok-4.5 API 怎么买最便宜？2026 价格与性价比">
+<meta name="twitter:description" content="grok-4.5 API 基准价为输入 $2、输出 $6、缓存命中 $0.5/百万 token，实际费用还要乘用户分组倍率。本文用同档位价格表和成本公式，说明如何核对分组、评估取舍并控制月度开支。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://api.openlux.ai/#organization",
+      "name": "OpenLux",
+      "url": "https://api.openlux.ai",
+      "description": "Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。",
+      "sameAs": [
+        "https://openlux.ai",
+        "https://doc.openlux.ai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#website",
+      "url": "https://a37836323.github.io/grok-4-5-api",
+      "name": "Grok 4.5 API 中转站 2026：价格、分组倍率与接入参考",
+      "inLanguage": "zh-CN",
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://a37836323.github.io/grok-4-5-api/grok-45-api-cost/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OpenLux",
+          "item": "https://api.openlux.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Grok 4.5 API 中转站",
+          "item": "https://a37836323.github.io/grok-4-5-api/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "grok-4.5 API 的成本，应该和哪些模型比较？",
+          "item": "https://a37836323.github.io/grok-4-5-api/grok-45-api-cost/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#application",
+      "name": "OpenLux API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://api.openlux.ai",
+      "description": "Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。",
+      "offers": {
+        "@type": "Offer",
+        "price": "待实测",
+        "priceCurrency": "CNY",
+        "url": "https://api.openlux.ai",
+        "description": "grok-4.5 的面板基准价以美元计：输入 $2、输出 $6、缓存命中 $0.5 / 100 万 token；实际结算按账号分组倍率计算，人民币价格待实测。"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://a37836323.github.io/grok-4-5-api/grok-45-api-cost/#article",
+      "headline": "grok-4.5 API 的成本，应该和哪些模型比较？",
+      "datePublished": "2026-08-04",
+      "dateModified": "2026-08-05",
+      "inLanguage": "zh-CN",
+      "author": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "mainEntityOfPage": "https://a37836323.github.io/grok-4-5-api/grok-45-api-cost/"
+    }
+  ]
+}
+</script>
+<style>*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#fdfdfc;color:#18181b;font-family:"Helvetica Neue",Helvetica,"PingFang SC","Source Han Sans SC","Microsoft YaHei",sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
+.pane-unit61{max-width:860px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.85rem;line-height:1.4;margin:.2em 0 .6em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:2.2em 0 .7em;padding-bottom:.35em;
+border-bottom:2px solid #dcfce7}
+h3{font-size:1.08rem;margin:1.6em 0 .5em}
+a{color:#059669;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+code{background:#f0fdf4;padding:.15em .4em;border-radius:2px;
+font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#f0fdf4;border:1px solid #dcfce7;border-radius:4px;
+padding:16px;overflow-x:auto;font-size:.86rem;line-height:1.6}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.94rem}
+th,td{border:1px solid #dcfce7;padding:10px 12px;text-align:left}
+th{background:#f0fdf4;font-weight:600}
+ul,ol{padding-left:1.5em}
+ul{list-style-type:disc}
+li{margin:.4em 0}
+.head-box30{background:#f0fdf4;border-left:3px solid #059669;
+border-radius:0 4px 4px 0;padding:14px 18px;margin:1.4em 0}
+.shell-col46{display:inline-block;background:#059669;color:#fff;
+padding:12px 26px;border-radius:4px;font-weight:600;margin:.6em 0}
+.shell-col46:hover{opacity:.88;text-decoration:none}
+.note-box85{color:#71717a;font-size:.86rem;margin-top:3em;
+padding-top:1.2em;border-top:1px solid #dcfce7}
+.head-stack13{border:1px solid #dcfce7;border-radius:4px;
+padding:2px 18px;margin:.8em 0}
+.list-list28{overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15px}
+  h1{font-size:1.5rem}
+  h2{font-size:1.18rem}
+  .pane-unit61{padding:20px 16px 48px}
+  table{font-size:.85rem}
+  th,td{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}</style>
+</head>
+<body>
+<main class="pane-unit61">
+<p class="unit-slot99"><a href="https://a37836323.github.io/grok-4-5-api/">首页</a> ／ grok-4.5</p>
+<h1>grok-4.5 API 的成本，应该和哪些模型比较？</h1>
+<p>按当前面板数据，grok-4.5 的基准输入价是 $2/100 万 token，输出价是 $6/100 万 token，缓存命中价是 $0.5/100 万 token。实际账单不是直接套基准价，而是基准价乘所在分组倍率；因此“最便宜”要同时看模型单价、输入输出比例和可用分组。</p>
+<div>
+<h2>grok-4.5 和同档位模型的单价是多少？</h2>
+<p>下面只比较面板中可用于文本或对话比较的模型，单位均为美元/100 万 token。grok-4.5 的基准价为输入 $2、输出 $6、缓存命中 $0.5；同一模型的最终价格还需要乘用户所在分组倍率。</p>
+<p>模型 | 厂商 | 输入 | 输出 | 缓存命中
+gpt-4.1 | OpenAI | $2 | $8 | $1
+gpt-5 | OpenAI | $1.25 | $10 | $0.125
+o4-mini | OpenAI | $1.1 | $4.4 | $0.275
+gemini-2.5-pro | Google | $1.25 | $10 | $0.125
+deepseek-v4-pro | DeepSeek | $3 | $6 | $0.0252
+qwen3-235b-a22b | Bailian | $2 | $8 | —
+grok-4 | Grok (xAI) | $3 | $15 | —
+grok-4.3 | Grok (xAI) | $1.25 | $2.5 | —
+grok-4.5 | Grok (xAI) | $2 | $6 | $0.5</p>
+<p>价格表来自 https://api.openlux.ai/api/pricing，拉取时间为 2026-08-04T16:16:08Z。接口当时显示在售模型总数为 452；本表只取调用量最高的 150 个中的相关模型，不代表平台只提供表内模型。</p>
+<h2>grok-4.5 每月用量怎么换算成成本？</h2>
+<p>月成本的计算结论取决于你的真实 token 日志，当前无法从已知材料推导出一个代表所有用户的固定月费。计算时分别统计输入 token、输出 token 和缓存命中 token，再套用：月成本 = 输入 token 数 ÷ 100 万 × $2 × 分组倍率 + 输出 token 数 ÷ 100 万 × $6 × 分组倍率 + 缓存命中 token 数 ÷ 100 万 × $0.5 × 分组倍率。</p>
+<p>例如使用 default 分组时，已知倍率是 ×0.07353，按基准价换算后，grok-4.5 输入为 $0.14706/100 万 token，输出为 $0.44118/100 万 token，缓存命中为 $0.036765/100 万 token。你的月度输入量、输出量、缓存命中量和最终月成本均为“待实测”，应以账单或调用日志回填。</p>
+<p>不要把请求次数直接当成 token 用量。相同请求次数可能因为提示词、历史消息和输出长度不同而产生不同费用；如果只有请求次数，单次平均输入 token、输出 token 和缓存命中 token 也需要“待实测”。</p>
+<h2>怎样判断 grok-4.5 是否比 OpenAI 更划算？</h2>
+<p>只看输入单价或输出单价都不能直接得出性价比结论。按表中基准价，grok-4.5 的输入价低于 grok-4，高于 grok-4.3；其输出价低于 grok-4，高于 grok-4.3 和 o4-mini。与 OpenAI 某个具体模型相比，结论还取决于你实际使用的模型、输入输出占比和分组倍率。</p>
+<p>价格之外，页面已知材料没有提供 grok-4.5 与这些模型的上下文长度、响应速度、能力 benchmark 或可用率数据，这些项目均为“待实测”。因此代码生成、长上下文、批量摘要或 Agent 工作流的适配性，不能仅凭这张价格表判断，应使用同一批任务和相同 token 预算进行验证。</p>
+<p>缓存命中价只有在请求确实产生缓存命中时才有意义。若业务没有稳定重复的前缀或上下文，不能把 $0.5/100 万 token 当成全部输入的价格。</p>
+<h2>怎么买到更低的 grok-4.5 实际单价？</h2>
+<p>先核对用户实际归属的分组，再计算最终价。已知分组倍率中，default 为 ×0.07353，huawei-grok 为 ×0.41177，Xai-Grok-1 为 ×0.44118；这些倍率作用于 grok-4.5 的输入、输出和缓存基准价，但材料没有说明每个分组对 grok-4.5 的具体可用性，不能据此承诺某个分组一定可购买或一定可调用。</p>
+<p>倍率列表中还存在更低的倍率，例如 Codex-Gpt-1 为 ×0.01471，但已知说明只把它标为 Codex Resources，没有给出 grok-4.5 的适用关系。购买前应在面板确认模型可见、分组可用，并以实际返回的价格或账单为准。</p>
+<p>购买渠道、支付方式、充值规则和接入步骤不属于本页已知事实，也不在这里重复。关于“怎么买”和“怎么付”，只能以站内对应购买与支付页面的实时信息为准；本页能确定的是价格核算方法，而不是某种支付承诺。</p>
+<h2>缓存、选型、批量这三个省钱方法怎么用？</h2>
+<p>第一，检查缓存命中。grok-4.5 的缓存命中基准价是 $0.5/100 万 token，低于 $2/100 万 token 的普通输入价；只有日志确认命中时，才能按缓存价计算。应记录输入 token、缓存命中 token 和未命中 token，避免把全部输入误算成缓存。</p>
+<p>第二，按任务选模型并用真实日志比较。若任务允许使用较低单价模型，可将候选模型的输入、输出价格与输出质量一起测量；已知价格表中 grok-4.3 为输入 $1.25、输出 $2.5，grok-4-1-fast-non-reasoning 和 grok-4-1-fast-reasoning 均为输入 $0.2、输出 $0.5，但它们与 grok-4.5 的能力、速度和上下文差异均为“待实测”。</p>
+<p>第三，把可延后的大批量任务集中处理，并在账单中核对实际 token 量。已知材料没有提供批量接口价格、批处理折扣或吞吐数据，因此批量是否更便宜不能直接承诺；在没有专门批量价之前，只能按实际分组倍率和 token 用量核算。</p>
+<h2>grok-4.5 的价格什么时候会变，去哪里核对？</h2>
+<p>价格应以中转站自身的定价接口为准，而不是长期依赖这篇页面中的快照。当前事实来源是 https://api.openlux.ai/api/pricing，本次数据拉取时间为 2026-08-04T16:16:08Z；接口中的模型数量、模型单价和分组倍率都可能需要重新核对。</p>
+<p>核对时至少查看三项：模型名是否仍为 grok-4.5，输入、输出和缓存命中基准价是否变化，用户所在分组倍率是否变化。最终价格按“基准价 × 分组倍率”计算；如果接口显示的字段或计费规则发生变化，应以面板展示和实际账单为准。</p>
+<p>本页没有提供价格锁定期限、调价通知周期或 SLA，这些信息均为“待实测”，不应据此安排长期预算。</p>
+<p>还有其他问题？完整文档与客服入口见 <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">OpenLux</a>。</p>
+</div>
+<div>
+<h2>这个站还有这些内容</h2>
+<ul class="panel-shell50">
+<li><a href="https://a37836323.github.io/grok-4-5-api/quickstart/">grok-4.5 API 在国内怎么接入？</a><span>接入步骤与可直接复制的代码</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/compare/">grok-4.5 用官方直连还是中转？逐项对比</a><span>逐项对比，含中转方案的局限</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/faq/">grok-4.5 API 常见问题</a><span>接入时最常遇到的问题</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-api-buy/">国内购买 grok-4.5 API，先确认渠道、计费和支付</a><span>购买 grok-4.5 API</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-payment-method/">grok-4.5 API 怎么付款：支付宝、微信和对公方式逐项核对</a><span>核对 grok-4.5 付款方式</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/api-relay-explained/">API 中转站的工作原理，以及 grok-4.5 是否该经过它</a><span>中转站原理与取舍</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/claude-code-grok-setup/">在 Claude Code 中接入 grok-4.5，哪些配置目前可以确认</a><span>Claude Code 接入说明</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-api-ban-risk/">用 grok-4.5 API，会因中转被封号吗？</a><span>封号与中转风险</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-free-trial/">2026 年 grok-4.5 API 免费额度：先确认资格，再安排试用</a><span>核对免费试用条件</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/organization-disabled-cline-error/">Cline 报 api error 400 this organization has been disabled，先确认问题在哪一侧</a><span>Cline 账号禁用报错排查</span></li>
+</ul>
+</div>
+<div>
+<h2>开始使用</h2>
+<p>先在面板确认分组倍率、接入地址和 grok-4.5 可用性，再进行最小请求测试</p>
+<p><a class="shell-col46" href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="button">立即注册并生成密钥</a></p>
+<p>官方地址：<a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">OpenLux Grok 4.5 API 中转站</a></p>
+</div>
+<p class="note-box85">最后更新：2026年08月05日　|　本页由 OpenLux 编写并维护。<br>所有性能与价格数据来自实测，如与官网不一致，以官网实时页面为准。</p>
+</main>
+<script>
+(function(){
+  try{
+    var EP='https://tk.openlux.ai/collect',S='grok-4-5-api',L='zh-CN',V=1;
+    var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    function send(type,extra){
+      try{
+        var p={v:V,t:type,s:S,l:L,sid:sid,
+               r:document.referrer||'',
+               p:location.pathname||'/',
+               q:location.search||'',
+               sw:screen.width||0,
+               tz:(Intl.DateTimeFormat().resolvedOptions()||{}).timeZone||''};
+        for(var k in extra){p[k]=extra[k];}
+        var body=JSON.stringify(p);
+        if(navigator.sendBeacon){
+          navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
+        }else{
+          fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+        }
+      }catch(e){}
+    }
+    if(document.visibilityState==='prerender'){
+      document.addEventListener('visibilitychange',function h(){
+        if(document.visibilityState!=='prerender'){
+          document.removeEventListener('visibilitychange',h);send('view');
+        }
+      });
+    }else{
+      send('view');
+    }
+    document.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
+      if(!a)return;
+      send('click',{c:a.getAttribute('data-cta')||'',h:a.href||''});
+    },{capture:true,passive:true});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
