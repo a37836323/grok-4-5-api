@@ -233,6 +233,14 @@ with urlopen(request, timeout=60) as response:
 <ul class="shell-card51">
 <li><a href="https://a37836323.github.io/grok-4-5-api/compare/">grok-4.5 用官方直连还是中转？逐项对比</a><span>逐项对比，含中转方案的局限</span></li>
 <li><a href="https://a37836323.github.io/grok-4-5-api/faq/">grok-4.5 API 常见问题</a><span>接入时最常遇到的问题</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-api-buy/">国内购买 grok-4.5 API，先确认渠道、计费和支付</a><span>购买 grok-4.5 API</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-payment-method/">grok-4.5 API 怎么付款：支付宝、微信和对公方式逐项核对</a><span>核对 grok-4.5 付款方式</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/api-relay-explained/">API 中转站的工作原理，以及 grok-4.5 是否该经过它</a><span>中转站原理与取舍</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/claude-code-grok-setup/">在 Claude Code 中接入 grok-4.5，哪些配置目前可以确认</a><span>Claude Code 接入说明</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-api-cost/">grok-4.5 API 的成本，应该和哪些模型比较？</a><span>看懂 grok-4.5 成本</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-api-ban-risk/">用 grok-4.5 API，会因中转被封号吗？</a><span>封号与中转风险</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-free-trial/">2026 年 grok-4.5 API 免费额度：先确认资格，再安排试用</a><span>核对免费试用条件</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/organization-disabled-cline-error/">Cline 报 api error 400 this organization has been disabled，先确认问题在哪一侧</a><span>Cline 账号禁用报错排查</span></li>
 </ul>
 </div>
 <div>
@@ -247,7 +255,6 @@ with urlopen(request, timeout=60) as response:
 (function(){
   try{
     var EP='https://tk.openlux.ai/collect',S='grok-4-5-api',L='zh-CN',V=1;
-    // 会话内唯一，仅存在于内存：刷新即变，不落 cookie 也不落 storage
     var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
     function send(type,extra){
       try{
@@ -262,12 +269,10 @@ with urlopen(request, timeout=60) as response:
         if(navigator.sendBeacon){
           navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
         }else{
-          // 老浏览器兜底。keepalive 让请求在页面卸载后仍能发完
           fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
         }
       }catch(e){}
     }
-    // 预渲染的页面不算一次真实访问，等真正可见了再报
     if(document.visibilityState==='prerender'){
       document.addEventListener('visibilitychange',function h(){
         if(document.visibilityState!=='prerender'){
@@ -277,7 +282,6 @@ with urlopen(request, timeout=60) as response:
     }else{
       send('view');
     }
-    // 出站点击：只记去向和位置，不记任何个人信息
     document.addEventListener('click',function(e){
       var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
       if(!a)return;
