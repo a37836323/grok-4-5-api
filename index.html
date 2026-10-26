@@ -83,7 +83,7 @@
       "@id": "https://a37836323.github.io/grok-4-5-api/#article",
       "headline": "Grok 4.5 API 中转站 2026 接入参考",
       "datePublished": "2026-08-04",
-      "dateModified": "2026-08-05",
+      "dateModified": "2026-10-27",
       "inLanguage": "zh-CN",
       "author": {
         "@id": "https://api.openlux.ai/#organization"
@@ -142,9 +142,10 @@ padding:2px 18px;margin:.8em 0}
 </head>
 <body>
 <main class="note-box85">
-<p data-notice="price-20261025" style="margin:0 0 16px;padding:10px 14px;border:1px solid #f0c36d;background:#fff8e6;color:#5c4400;border-radius:6px;font-size:14px;line-height:1.6">本页价格与模型信息整理于 2026 年 8 月，可能已有变化，请以官网为准：<a href="https://www.openlux.ai/pricing?utm_source=grok-4-5-api&amp;utm_medium=satellite&amp;utm_campaign=price_notice" style="color:#0b57d0">OpenLux 官网价格页</a></p>
+<p data-notice="price-20261025" style="margin:0 0 16px;padding:10px 14px;border:1px solid #f0c36d;background:#fff8e6;color:#5c4400;border-radius:6px;font-size:14px;line-height:1.6">本页价格与模型信息可能已有变化，请以官网为准：<a href="https://www.openlux.ai/pricing?utm_source=grok-4-5-api&amp;utm_medium=satellite&amp;utm_campaign=price_notice" style="color:#0b57d0">OpenLux 官网价格页</a></p>
 <h1>Grok 4.5 API 中转站 2026 接入参考</h1>
 <p>Grok 4.5 的发布时间待实测。本文整理 2026-08-04 从平台定价接口拉取的 grok-4.5 基准价格、分组倍率与接入核对项，帮助开发者在调用前确认实际结算方式。</p>
+
 <div>
 <h2>最新动态：2026-08-04 面板数据更新</h2>
 <ul>
@@ -154,13 +155,13 @@ padding:2px 18px;margin:.8em 0}
 <li>grok-4.5 缓存命中基准价为 <strong>$0.5 / 100 万 token</strong>。</li>
 <li>最终结算价格按基准价乘以用户所在分组倍率计算。</li>
 </ul>
-<p><a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">OpenLux</a></p>
+<p><a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="news">OpenLux</a></p>
 </div>
 <div>
 <h2>什么是 Grok 4.5 API 中转站？</h2>
 <p><strong>所谓 API 中转，就是把多家厂商的接口收敛成一套统一标准，你只对接一次，后面换模型只改一个参数。</strong></p>
-<p>grok-4.5 官方接口在国内落地，卡点集中在网络可达性、支付方式和账号稳定性这三件事上。</p>
-<p>OpenLux 把这一层做成了公共服务：<a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">OpenLux Grok 4.5 API 中转站</a> 聚合了 452 个在售模型 主流模型，统一走 OpenAI 兼容格式，国内网络可直接访问，支持人民币结算。</p>
+<p>使用 grok-4.5 时，请先核对模型可用分组、请求协议和实际计费方式。</p>
+<p>OpenLux 提供模型 API 接入服务：<a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">OpenLux Grok 4.5 API 中转站</a> 当前价格目录包含 452 个在售模型 个模型。不同模型支持的接口、分组和计费规则可能不同，接入前请核对。</p>
 </div>
 <div>
 <h2>支持的模型与价格</h2>
@@ -172,7 +173,7 @@ padding:2px 18px;margin:.8em 0}
 </tbody>
 </table>
 </div>
-<p><small>价格以 <a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">Grok 4.5 API 中转站</a> 实时页面为准，本页更新于 2026年08月05日。</small></p>
+<p><small>价格以 <a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="pricing">Grok 4.5 API 中转站</a> 实时页面为准，本页更新于 2026年10月27日。</small></p>
 </div>
 <div>
 <h2>为什么需要 API 中转？</h2>
@@ -182,7 +183,7 @@ padding:2px 18px;margin:.8em 0}
 <li><strong>分组倍率参与结算</strong>：实际价格不是固定基准价，而是基准价乘以用户所在分组的倍率；调用前应确认当前账号所属分组。</li>
 <li><strong>同一面板含多模型</strong>：平台在售模型总数为 452 个。已提供的列表仅列调用量最高的 150 个，未列出的 302 个模型不应视为不支持。</li>
 </ul>
-<p>以上能力在 <a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">https://api.openlux.ai</a> 均已上线，可注册后自行验证。</p>
+<p>注册入口：<a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">https://api.openlux.ai</a>。注册后仍需创建密钥、选择可用分组并完成调用验证。</p>
 </div>
 <div>
 <h2>这个站还有这些内容</h2>
@@ -198,15 +199,16 @@ padding:2px 18px;margin:.8em 0}
 <li><a href="https://a37836323.github.io/grok-4-5-api/grok-api-ban-risk/">用 grok-4.5 API，会因中转被封号吗？</a><span>封号与中转风险</span></li>
 <li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-free-trial/">2026 年 grok-4.5 API 免费额度：先确认资格，再安排试用</a><span>核对免费试用条件</span></li>
 <li><a href="https://a37836323.github.io/grok-4-5-api/organization-disabled-cline-error/">Cline 报 api error 400 this organization has been disabled，先确认问题在哪一侧</a><span>Cline 账号禁用报错排查</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-4-5-reasoning-params-error-fix/">grok-4.5 请求报错：先删掉 stop、presencePenalty 和 frequencyPenalty</a><span>grok-4.5 推理参数报错</span></li>
 </ul>
 </div>
 <div>
 <h2>开始使用</h2>
 <p>先在面板确认分组倍率、接入地址和 grok-4.5 可用性，再进行最小请求测试</p>
-<p><a class="head-box30" href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="button">注册账号，领取测试额度</a></p>
-<p>官方地址：<a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">OpenLux官网</a></p>
+<p><a class="head-box30" href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="register-bottom">创建账号，开始接入</a></p>
+<p>账号入口：<a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">OpenLux官网</a></p>
 </div>
-<p class="list-list28">最后更新：2026年08月05日　|　本页由 OpenLux 编写并维护。<br>所有性能与价格数据来自实测，如与官网不一致，以官网实时页面为准。</p>
+<p class="list-list28">最后更新：2026年10月27日　|　本页由 OpenLux 编写并维护。<br>价格资料以文中标注的数据来源和查询日期为准；未完成的性能测试不作为承诺。实际可用性与计费以控制台为准。</p>
 </main>
 <script>
 (function(){
