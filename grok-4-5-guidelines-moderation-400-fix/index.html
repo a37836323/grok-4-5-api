@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>grok-4.5 怎么限制色情、暴力和脏话输出：guidelines 审核参数写法与 400/422 报错</title>
+<meta name="description" content="xAI 10 月新增 guidelines 自定义审核参数，可对 nsfw、violence、profanity 三类内容设为 decline。本文按官方文档整理 grok-4.5 请求里的写法、400/422 报错原因、排查步骤和中转调用注意事项。">
+<meta name="keywords" content="Grok 4.5 API 中转站,Grok 4.5 API,grok-4.5,xAI API 中转,Grok API 价格,Grok 4.5 价格,大模型 API 中转,API 分组倍率">
+<link rel="canonical" href="https://a37836323.github.io/grok-4-5-api/grok-4-5-guidelines-moderation-400-fix/">
+<link rel="alternate" hreflang="zh-CN" href="https://a37836323.github.io/grok-4-5-api/">
+<link rel="alternate" hreflang="en-US" href="https://grok-4-5-api-en.pages.dev/">
+<link rel="alternate" hreflang="x-default" href="https://a37836323.github.io/grok-4-5-api/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="grok-4.5 怎么限制色情、暴力和脏话输出：guidelines 审核参数写法与 400/422 报错">
+<meta property="og:description" content="xAI 10 月新增 guidelines 自定义审核参数，可对 nsfw、violence、profanity 三类内容设为 decline。本文按官方文档整理 grok-4.5 请求里的写法、400/422 报错原因、排查步骤和中转调用注意事项。">
+<meta property="og:url" content="https://api.openlux.ai/">
+<meta property="og:site_name" content="OpenLux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="grok-4.5 怎么限制色情、暴力和脏话输出：guidelines 审核参数写法与 400/422 报错">
+<meta name="twitter:description" content="xAI 10 月新增 guidelines 自定义审核参数，可对 nsfw、violence、profanity 三类内容设为 decline。本文按官方文档整理 grok-4.5 请求里的写法、400/422 报错原因、排查步骤和中转调用注意事项。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://api.openlux.ai/#organization",
+      "name": "OpenLux",
+      "url": "https://api.openlux.ai",
+      "description": "Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。",
+      "sameAs": [
+        "https://openlux.ai",
+        "https://doc.openlux.ai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#website",
+      "url": "https://a37836323.github.io/grok-4-5-api",
+      "name": "Grok 4.5 API 中转站 2026：价格、分组倍率与接入参考",
+      "inLanguage": "zh-CN",
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://a37836323.github.io/grok-4-5-api/grok-4-5-guidelines-moderation-400-fix/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OpenLux",
+          "item": "https://api.openlux.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Grok 4.5 API 中转站",
+          "item": "https://a37836323.github.io/grok-4-5-api/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "grok-4.5 用 guidelines 参数收紧内容审核：写法、报错与验证",
+          "item": "https://a37836323.github.io/grok-4-5-api/grok-4-5-guidelines-moderation-400-fix/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://a37836323.github.io/grok-4-5-api/#application",
+      "name": "OpenLux API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://api.openlux.ai",
+      "description": "Grok 4.5 API 中转站接入参考：面板基准输入 $2、输出 $6 美元/100 万 token，并按用户分组倍率结算。",
+      "offers": {
+        "@type": "Offer",
+        "price": "待实测",
+        "priceCurrency": "CNY",
+        "url": "https://api.openlux.ai",
+        "description": "grok-4.5 的面板基准价以美元计：输入 $2、输出 $6、缓存命中 $0.5 / 100 万 token；实际结算按账号分组倍率计算，人民币价格待实测。"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://a37836323.github.io/grok-4-5-api/grok-4-5-guidelines-moderation-400-fix/#article",
+      "headline": "grok-4.5 用 guidelines 参数收紧内容审核：写法、报错与验证",
+      "datePublished": "2026-08-04",
+      "dateModified": "2026-10-30",
+      "inLanguage": "zh-CN",
+      "author": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "mainEntityOfPage": "https://a37836323.github.io/grok-4-5-api/grok-4-5-guidelines-moderation-400-fix/"
+    }
+  ]
+}
+</script>
+<style>*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#fdfdfc;color:#18181b;font-family:"Helvetica Neue",Helvetica,"PingFang SC","Source Han Sans SC","Microsoft YaHei",sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
+.pane-unit61{max-width:860px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.85rem;line-height:1.4;margin:.2em 0 .6em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:2.2em 0 .7em;padding-bottom:.35em;
+border-bottom:2px solid #dcfce7}
+h3{font-size:1.08rem;margin:1.6em 0 .5em}
+a{color:#059669;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+code{background:#f0fdf4;padding:.15em .4em;border-radius:2px;
+font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#f0fdf4;border:1px solid #dcfce7;border-radius:4px;
+padding:16px;overflow-x:auto;font-size:.86rem;line-height:1.6}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.94rem}
+th,td{border:1px solid #dcfce7;padding:10px 12px;text-align:left}
+th{background:#f0fdf4;font-weight:600}
+ul,ol{padding-left:1.5em}
+ul{list-style-type:disc}
+li{margin:.4em 0}
+.head-box30{background:#f0fdf4;border-left:3px solid #059669;
+border-radius:0 4px 4px 0;padding:14px 18px;margin:1.4em 0}
+.shell-col46{display:inline-block;background:#059669;color:#fff;
+padding:12px 26px;border-radius:4px;font-weight:600;margin:.6em 0}
+.shell-col46:hover{opacity:.88;text-decoration:none}
+.note-box85{color:#71717a;font-size:.86rem;margin-top:3em;
+padding-top:1.2em;border-top:1px solid #dcfce7}
+.head-stack13{border:1px solid #dcfce7;border-radius:4px;
+padding:2px 18px;margin:.8em 0}
+.list-list28{overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15px}
+  h1{font-size:1.5rem}
+  h2{font-size:1.18rem}
+  .pane-unit61{padding:20px 16px 48px}
+  table{font-size:.85rem}
+  th,td{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}</style>
+</head>
+<body>
+<main class="pane-unit61">
+<p data-notice="price-20261025" style="margin:0 0 16px;padding:10px 14px;border:1px solid #f0c36d;background:#fff8e6;color:#5c4400;border-radius:6px;font-size:14px;line-height:1.6">本页价格与模型信息可能已有变化，请以官网为准：<a href="https://www.openlux.ai/pricing?utm_source=grok-4-5-api&amp;utm_medium=satellite&amp;utm_campaign=price_notice" style="color:#0b57d0">OpenLux 官网价格页</a></p>
+<p class="unit-slot99"><a href="https://a37836323.github.io/grok-4-5-api/">首页</a> ／ grok-4.5</p>
+<h1>grok-4.5 用 guidelines 参数收紧内容审核：写法、报错与验证</h1>
+<p>如果你的产品面向普通用户，希望 grok-4.5 的回答避开性暗示、血腥暴力描写或脏话，可以在请求里加 xAI 10 月新增的 guidelines 数组，把对应类别设为 decline。加了之后如果请求直接返回 400 或 422，通常是数组格式写错，或者请求里同时带了 stop、n 大于 1 这类不能和 guidelines 一起用的设置。本页根据 xAI 官方的 Custom Moderation Controls 文档、发布说明和 Chat Completions 接口参考整理写法、报错对照和验证方法。</p>
+
+<div>
+<h2>guidelines 参数是什么，grok-4.5 能用吗？</h2>
+<p>xAI 发布说明在 10 月一栏写明：现在可以给文本 API 请求设置内容准则，在 Chat Completions 或 Responses API 请求里加一个 guidelines 数组，控制 Grok 怎么处理 nsfw、violence、profanity 三类内容，Grok 会在生成回答时遵守这些准则。详细说明在 Custom Moderation Controls 文档：https://docs.x.ai/developers/advanced-api-usage/custom-moderation-controls 。</p>
+<p>官方文档的示例用的是 grok-4.7，没有逐个列出支持的模型；文档只写明两类请求不能用 guidelines：多智能体模型（例如 grok-4.20-multi-agent）和 deferred completions（延迟补全）。grok-4.5 的官方模型页 https://docs.x.ai/developers/models/grok-4.5 标注它是推理模型，不是多智能体模型，不在这份例外名单里。是否真正生效，按本页最后的验证方法用自己的请求确认。</p>
+<p>这个参数目前只能让审核更严格，不能放宽。文档的说法是：对你列出的类别选择进一步加强的行为，目前唯一可选的行为是 decline；没有列出的类别继续使用模型默认的审核行为。所以只需要列出你想改变的类别。</p>
+<h2>三个类别设成 decline 后，模型会怎么回答？</h2>
+<p>nsfw 设为 decline：避免性暗示和性化的对话，但仍会回答关于性话题的教育类和医疗临床类问题。</p>
+<p>violence 设为 decline：避免血腥暴力的描写，仍然可以谈历史和新闻，只是不写血腥细节。</p>
+<p>profanity 设为 decline：回答里不使用脏话；如果请求本身只是要脏话，或者请求内容极具冒犯性，会拒绝。</p>
+<p>官方特别说明两点：一是 Grok 用自己的话遵守准则，返回的响应结构和不带 guidelines 时完全一样，不会多出一个“已拦截”之类的字段；二是上面只是概括描述，xAI 之后可能调整细节。也就是说，不能指望在响应里读到审核结果，需要自己按内容判断。</p>
+<h2>请求里 guidelines 应该怎么写？</h2>
+<p>数组里每一项有三个字段：type 固定写 policy，category 填 nsfw、violence 或 profanity，behavior 填 decline。例如同时限制暴力和色情，就写两项：{&quot;type&quot;: &quot;policy&quot;, &quot;category&quot;: &quot;violence&quot;, &quot;behavior&quot;: &quot;decline&quot;} 和 {&quot;type&quot;: &quot;policy&quot;, &quot;category&quot;: &quot;nsfw&quot;, &quot;behavior&quot;: &quot;decline&quot;}。同一个类别只能出现一次。</p>
+<p>用 Chat Completions 接口（/v1/chat/completions）时，把 guidelines 作为请求体的顶层字段，和 model、messages 同一层，不要放进某条消息里。用 Responses 接口（/v1/responses）时，同样放在请求体顶层，和 model、input 同一层。</p>
+<p>用 OpenAI 官方 SDK 时要注意：OpenAI SDK 里没有定义 guidelines 这个参数。Python SDK 要放进 extra_body，例如 client.responses.create(model=..., input=..., extra_body={&quot;guidelines&quot;: [...]})；JavaScript SDK 直接和其他参数一起传即可。用 xAI 自己的 Python SDK 时，在 client.chat.create 里传 guidelines=[...]，它会把准则保存在这个 chat 上，之后每次 sample 都会带上。</p>
+<p>guidelines 只对带着它的那一次请求生效。多轮对话想全程生效，每次请求都要带上；用 OpenAI SDK 或直接发 HTTP 的代码，最好在统一封装请求的地方加，避免某些入口漏带。</p>
+<h2>加了 guidelines 后报 400 或 422，按这张对照查</h2>
+<p>官方文档说明：API 会在运行模型之前检查 guidelines，无法应用时直接返回错误，模型不会运行。各状态码的原因如下。</p>
+<p>422：category 或 behavior 不是已知取值，例如拼错成 nsfw_content、把 behavior 写成 block。官方说错误信息里会列出合法取值，照着改即可。</p>
+<p>400：同一个 category 在数组里出现了不止一次。合并成一项。</p>
+<p>400：type 不是 policy。每一项都要写 &quot;type&quot;: &quot;policy&quot;，不能省略或写成别的值。</p>
+<p>400：这个请求不能使用 guidelines。包括用了多智能体模型、走 deferred completions，以及请求里没有服务端工具、也没有文件附件，却设置了 stop 或者 n 大于 1。官方说这种情况下错误信息会写出是哪个模型或哪个选项导致的。</p>
+<p>对 grok-4.5 来说，stop 本来就有问题：xAI 推理指南写明 presencePenalty、frequencyPenalty 和 stop 不能用于推理模型，带上会返回错误（https://docs.x.ai/developers/model-capabilities/text/reasoning ）。所以接入 guidelines 前，先把请求里的 stop 去掉；n 保持默认或写 1。</p>
+<p>如果用 xAI Python SDK，类别或行为写错时，SDK 在发请求前就会抛出 ValueError；其他错误由 API 以 gRPC 的 INVALID_ARGUMENT 状态返回。</p>
+<h2>按什么顺序排查，怎么确认已经生效？</h2>
+<p>第一步，保存一次失败请求的完整请求体和响应体，看状态码是 400 还是 422，再看错误信息里点名的是字段取值、模型还是某个选项。</p>
+<p>第二步，对照上一节逐项检查：每项三个字段是否齐全、type 是否为 policy、类别是否重复、取值是否拼写正确；请求里有没有 stop、n 大于 1；模型名是不是 grok-4.5（官方模型页列出的别名还有 grok-4.5-latest 和 grok-build-latest），有没有误用多智能体模型或 deferred completions。</p>
+<p>第三步，确认 guidelines 放在请求体顶层。用 OpenAI Python SDK 时检查是否按官方写法放进了 extra_body，而不是直接作为 create() 的参数传入。</p>
+<p>第四步，验证效果。因为官方说响应结构不变，没有专门的审核字段，验证只能看内容：用同一个容易触发该类内容的测试提示，分别发一次不带 guidelines 和带 guidelines 的请求，对比回答是否回避了对应内容。模型输出本身有随机性，建议多发几次再下结论，并保留测试提示和结果作为上线记录。</p>
+<p>成功标准：带 guidelines 的请求返回 200、不再出现 400/422；回答在你限制的类别上明显收敛，其他类别和正常问题的回答不受影响。</p>
+<h2>通过中转站调用 grok-4.5 时，guidelines 会生效吗？</h2>
+<p>guidelines 是 xAI 官方接口的参数。通过中转站调用时，这个字段会不会原样转发到 xAI，取决于平台的转发方式；本页没有用真实请求实测，无法保证和官方直连效果一致。</p>
+<p>OpenLux 价格接口显示 grok-4.5 支持的接口类型是 openai（OpenAI 兼容）和 anthropic，不含 OpenAI Responses。用 OpenAI 兼容方式时，Base URL 填 https://api.openlux.ai/v1，请求 /v1/chat/completions，把 guidelines 写在请求体顶层；xAI 官方文档只说明 Chat Completions 和 Responses 接受 guidelines，没有提到 Anthropic 格式的请求，用 Anthropic 协议调用时不要依赖这个参数。</p>
+<p>稳妥的做法是：按上一节的方法分别对比带与不带 guidelines 的输出，确认中转后确实有效再上线；同时在自己的应用里保留必要的内容过滤，不要只靠这一个参数。如果按本页改完仍然报错，把完整响应体和请求时间交给平台核对。费用以官网价格页和平台显示为准。</p>
+<p>还有其他问题？完整文档与客服入口见 <a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="docs">OpenLux</a>。</p>
+</div>
+<div>
+<h2>这个站还有这些内容</h2>
+<ul class="panel-shell50">
+<li><a href="https://a37836323.github.io/grok-4-5-api/quickstart/">grok-4.5 API 在国内怎么接入？</a><span>接入步骤与可直接复制的代码</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/compare/">grok-4.5 用官方直连还是中转？逐项对比</a><span>逐项对比，含中转方案的局限</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/faq/">grok-4.5 API 常见问题</a><span>接入时最常遇到的问题</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-api-buy/">国内购买 grok-4.5 API，先确认渠道、计费和支付</a><span>购买 grok-4.5 API</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-payment-method/">grok-4.5 API 怎么付款：支付宝、微信和对公方式逐项核对</a><span>核对 grok-4.5 付款方式</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/api-relay-explained/">API 中转站的工作原理，以及 grok-4.5 是否该经过它</a><span>中转站原理与取舍</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/claude-code-grok-setup/">在 Claude Code 中接入 grok-4.5，哪些配置目前可以确认</a><span>Claude Code 接入说明</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-api-cost/">grok-4.5 API 的成本，应该和哪些模型比较？</a><span>看懂 grok-4.5 成本</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-api-ban-risk/">用 grok-4.5 API，会因中转被封号吗？</a><span>封号与中转风险</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-45-free-trial/">2026 年 grok-4.5 API 免费额度：先确认资格，再安排试用</a><span>核对免费试用条件</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/organization-disabled-cline-error/">Cline 报 api error 400 this organization has been disabled，先确认问题在哪一侧</a><span>Cline 账号禁用报错排查</span></li>
+<li><a href="https://a37836323.github.io/grok-4-5-api/grok-4-5-reasoning-params-error-fix/">grok-4.5 请求报错：先删掉 stop、presencePenalty 和 frequencyPenalty</a><span>grok-4.5 推理参数报错</span></li>
+</ul>
+</div>
+<div>
+<h2>开始使用</h2>
+<p>先在面板确认分组倍率、接入地址和 grok-4.5 可用性，再进行最小请求测试</p>
+<p><a class="shell-col46" href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="register-bottom">创建账号，开始接入</a></p>
+<p>账号入口：<a href="https://api.openlux.ai/register?channel=c_46krxirx" rel="nofollow noopener" data-cta="link">OpenLux Grok 4.5 API 中转站</a></p>
+</div>
+<p class="note-box85">最后更新：2026年10月30日　|　本页由 OpenLux 编写并维护。<br>价格资料以文中标注的数据来源和查询日期为准；未完成的性能测试不作为承诺。实际可用性与计费以控制台为准。</p>
+</main>
+<script>
+(function(){
+  try{
+    var EP='https://tk.openlux.ai/collect',S='grok-4-5-api',L='zh-CN',V=1;
+    var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    function send(type,extra){
+      try{
+        var p={v:V,t:type,s:S,l:L,sid:sid,
+               r:document.referrer||'',
+               p:location.pathname||'/',
+               q:location.search||'',
+               sw:screen.width||0,
+               tz:(Intl.DateTimeFormat().resolvedOptions()||{}).timeZone||''};
+        for(var k in extra){p[k]=extra[k];}
+        var body=JSON.stringify(p);
+        if(navigator.sendBeacon){
+          navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
+        }else{
+          fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+        }
+      }catch(e){}
+    }
+    if(document.visibilityState==='prerender'){
+      document.addEventListener('visibilitychange',function h(){
+        if(document.visibilityState!=='prerender'){
+          document.removeEventListener('visibilitychange',h);send('view');
+        }
+      });
+    }else{
+      send('view');
+    }
+    document.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
+      if(!a)return;
+      send('click',{c:a.getAttribute('data-cta')||'',h:a.href||''});
+    },{capture:true,passive:true});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
